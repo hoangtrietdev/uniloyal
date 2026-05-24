@@ -321,7 +321,7 @@ export async function updateCRMRule(id: string, data: Partial<CRMAutomationRule>
     return;
   }
 
-  mockMerchantState.crmRules = mockMerchantState.crmRules.map((rule) => (rule.id === id ? { ...rule, ...data } : rule));
+  mockMerchantState.crmRules = mockMerchantState.crmRules.map((rule: Record<string, unknown>) => (rule?.id === id ? { ...rule, ...data } : rule));
 }
 
 export async function deleteCRMRule(id: string): Promise<void> {
@@ -331,7 +331,7 @@ export async function deleteCRMRule(id: string): Promise<void> {
     return;
   }
 
-  mockMerchantState.crmRules = mockMerchantState.crmRules.filter((rule) => rule.id !== id);
+  mockMerchantState.crmRules = mockMerchantState.crmRules.filter((rule: Record<string, unknown>) => rule.id !== id);
 }
 
 export async function getAllTransactions(): Promise<(Transaction & { userName?: string })[]> {
